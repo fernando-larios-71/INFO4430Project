@@ -1,0 +1,162 @@
+﻿<!--Fernando Larios Diaz
+    INFO 4430
+    Dr. Houghton
+    Web Application
+-->
+
+<!--Title of the page.-->
+
+@{
+    ViewData["title"] = "Dungeons and Dragons";
+}
+
+<!--Linking stylesheet.-->
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/DND.css" asp-append-version="true" />
+<!--DND Logo-->
+<img id="dnd" alt="dnd" height="300" width="300" src="@Url.Content("~/Images/dndred.jpg")" />
+
+<!--Calling the title.-->
+
+<h1>@ViewData["title"]</h1>
+
+<!--Text seen upon arriving at page.-->
+
+<h2>Welcome to the Dungeons and Dragons section of 208GameHub!</h2>
+
+<p>Dungeons & Dragons (commonly abbreviated as D&D or DnD) is a fantasy tabletop role-playing game (RPG) originally designed by Gary Gygax and Dave Arneson.
+   It was first published in 1974 by Tactical Studies Rules, Inc. (TSR).
+   It has been published by Wizards of the Coast (now a subsidiary of Hasbro) since 1997.
+   The game was derived from miniature wargames, with a variation of the 1971 game Chainmail serving as the initial rule system.
+   D&D's publication is commonly recognized as the beginning of modern role-playing games and the role-playing game industry,and also deeply influenced video games, especially the role-playing video game genre.</p>
+
+<p>Below, you will find the space to add your own events to host your own Dungeons and Dragons event!</p>
+
+<!--<h3>[This page is currently under construction.]</h3>-->
+
+<!--Future additions will go under here.-->
+<!--Bottom portion of page.-->
+<html>
+
+<body>
+    <!--This is where the whole adding an event option is. -->
+    <div style="height:45px">
+        <h2 style="color: white">Add Your Event Below!</h2>
+    </div>
+    <div>
+        <!--Add Event button-->
+        <button id="myBtn">Add Event</button>
+    </div>
+    <div>
+        <!--Table where event details are shown. -->
+        <table id="tasksTable">
+            <thead>
+                <tr style="background-color: white">
+                    <th style="width: 120px;">Name</th>
+                    <th style="width: 250px;">Description (Event Details, Location, & Date)</th>
+                    <th style="width: 120px">Date Posted</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!--Code for modal pop up to be used for creating events.-->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <!--Header-->
+                <h3> Add Event</h3>
+            </div>
+            <div class="modal-body">
+                <table style="padding: 20px 40px">
+                    <tr>
+                        <!--Name header-->
+                        <td style="width:150px">Name:</td>
+                        <td><input type="text" name="name" id="taskname" /></td>
+                    </tr>
+                    <tr>
+                        <!--Description-->
+                        <td>
+                            Desc:
+                        </td>
+                        <td>
+                            <textarea name="desc" id="taskdesc" cols="60" rows="10"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--Button to submit event-->
+            <div class="modal-footer">
+                <button type="submit" value="submit" style="float: right;" onclick="addTasks()">Post Event</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<!--Javascript code for modal window-->
+<script>
+    var tasks = [];
+    var descs = [];
+
+    //Gets the modal
+    var modal = document.getElementById('myModal');
+
+    //Gets the button that opens the modal window
+    var btn = document.getElementById("myBtn");
+
+    //Gets the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    //Opens modal when button is clicked
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    //Closes modal when clicking X in top left corner
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    var rowCount = 1;
+    //Adding the tasks from the modal.
+    function addTasks() {
+        var temp = 'style .fa fa-trash';
+        tasks.push(document.getElementById("taskname").value);
+        descs.push(document.getElementById("taskdesc").value);
+        var table = document.getElementById("tasksTable");
+        var row = table.insertRow(rowCount);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        cell1.innerHTML = tasks[rowCount - 1];
+        cell2.innerHTML = descs[rowCount - 1];
+        cell3.innerHTML = getDate();
+        cell4.innerHTML = '<td class="fa fa-trash"></td>';
+        rowCount++;
+        modal.style.display = "none";
+    }
+
+    //Get Date function for Date Posted seciton.
+    function getDate() {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1;
+
+        var yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        var today = mm + '-' + dd + '-' + yyyy.toString().slice(2);
+        return today;
+    }
+</script>

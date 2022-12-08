@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-_4430Project-0FB55DF5-B165-4F24-BF94-15A4A3408AE3</UserSecretsId>
+    <RootNamespace>_4430Project</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\MTC.css" />
+    <None Include="wwwroot\css\Pokemon.css" />
+    <None Include="wwwroot\css\DND.css" />
+    <None Include="wwwroot\Images\dnd.png" />
+    <None Include="wwwroot\Images\mtc.png" />
+    <None Include="wwwroot\Images\pokemon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="app.db" CopyToOutputDirectory="PreserveNewest" ExcludeFromSingleFile="true" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="6.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\css\AnimalCrossing.css" />
+    <Content Remove="wwwroot\css\Mario.css" />
+    <Content Remove="wwwroot\css\Zelda.css" />
+    <Content Remove="wwwroot\Images\dnd.png" />
+    <Content Remove="wwwroot\Images\dndred.jpeg" />
+    <Content Remove="wwwroot\Images\mtc.png" />
+    <Content Remove="wwwroot\Images\pokemon.png" />
+    <Content Remove="wwwroot\Images\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\Images\" />
+  </ItemGroup>
+</Project>

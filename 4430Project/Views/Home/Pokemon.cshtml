@@ -1,0 +1,167 @@
+﻿<!--Fernando Larios Diaz
+    INFO 4430
+    Dr. Houghton
+    Web Application
+-->
+
+<!--Title of the page.-->
+
+@{
+    ViewData["title"] = "Pokemon";
+}
+<!--Linking stylesheet.-->
+
+<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="~/css/Pokemon.css" asp-append-version="true" />
+<!--Pokemon Logo-->
+<img id="pokemon" alt="pokemon" height="300" width="300" src="@Url.Content("~/Images/pikachu.jpg")" />
+
+<!--Calling the title.-->
+
+<h1>@ViewData["title"]</h1>
+
+<!--Text seen upon arriving at page.-->
+
+<h2>Welcome to the Pokemon section of 208GameHub!</h2>
+
+<p>
+    About Pokemon:
+    The Pokémon Trading Card Game (TCG) is a collectible card game with a goal similar to a Pokémon battle in the video game series.
+    Players use Pokémon cards, with individual strengths and weaknesses, in an attempt to defeat their opponent by "knocking out" their Pokémon cards.
+    The game was published in North America by Wizards of the Coast in 1999.With the release of the Game Boy Advance video games Pokémon Ruby and Sapphire, the Pokémon Company took back the card game from Wizards of the Coast and started publishing the cards themselves.
+    The Expedition expansion introduced the Pokémon-e Trading Card Game, where the cards (for the most part) were compatible with the Nintendo e-Reader. Nintendo discontinued its production of e-Reader compatible cards with the release of FireRed and LeafGreen.
+    In 1998, Nintendo released a Game Boy Color version of the trading card game in Japan; Pokémon Trading Card Game was subsequently released to the US and Europe in 2000. The game included digital versions of cards from the original set of cards and the first two expansions (Jungle and Fossil), as well as several cards exclusive to the game.
+    A sequel was released in Japan in 2001.
+</p>
+
+<p>Below, you will find the space to add your own events to host your own Pokemon event!</p>
+
+
+<!--<h3>[This page is currently under construction.]</h3>-->
+
+<!--Future additions will go under here.-->
+<!--Bottom portion of page.-->
+<html>
+
+<body>
+    <!--This is where the whole adding an event option is. -->
+    <div style="height:45px">
+        <h2 style="color: black">Add Your Event Below!</h2>
+    </div>
+    <div>
+        <!--Add Event button-->
+        <button id="myBtn">Add Event</button>
+    </div>
+    <div>
+        <!--Table where event details are shown. -->
+        <table id="tasksTable">
+            <thead>
+                <tr style="background-color: white">
+                    <th style="width: 120px;">Name</th>
+                    <th style="width: 250px;">Description (Event Details, Location, & Date)</th>
+                    <th style="width: 120px">Date Posted</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <!--Code for modal pop up to be used for creating events.-->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <!--Header-->
+                <h3> Add Event</h3>
+            </div>
+            <div class="modal-body">
+                <table style="padding: 20px 40px">
+                    <tr>
+                        <!--Name header-->
+                        <td style="width:150px">Name:</td>
+                        <td><input type="text" name="name" id="taskname" /></td>
+                    </tr>
+                    <tr>
+                        <!--Description-->
+                        <td>
+                            Desc:
+                        </td>
+                        <td>
+                            <textarea name="desc" id="taskdesc" cols="60" rows="10"></textarea>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!--Button to submit event-->
+            <div class="modal-footer">
+                <button type="submit" value="submit" style="float: right;" onclick="addTasks()">Post Event</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+<!--Javascript code for modal window-->
+<script>
+    var tasks = [];
+    var descs = [];
+
+    //Gets the modal
+    var modal = document.getElementById('myModal');
+
+    //Gets the button that opens the modal window
+    var btn = document.getElementById("myBtn");
+
+    //Gets the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    //Opens modal when button is clicked
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    //Closes modal when clicking X in top left corner
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    var rowCount = 1;
+    //Adding the tasks from the modal.
+    function addTasks() {
+        var temp = 'style .fa fa-trash';
+        tasks.push(document.getElementById("taskname").value);
+        descs.push(document.getElementById("taskdesc").value);
+        var table = document.getElementById("tasksTable");
+        var row = table.insertRow(rowCount);
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        cell1.innerHTML = tasks[rowCount - 1];
+        cell2.innerHTML = descs[rowCount - 1];
+        cell3.innerHTML = getDate();
+        cell4.innerHTML = '<td class="fa fa-trash"></td>';
+        rowCount++;
+        modal.style.display = "none";
+    }
+
+    //Get Date function for Date Posted seciton.
+    function getDate() {
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1;
+
+        var yyyy = today.getFullYear();
+
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        var today = mm + '-' + dd + '-' + yyyy.toString().slice(2);
+        return today;
+    }
+</script>
+
