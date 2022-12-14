@@ -1,8 +1,13 @@
-﻿html {
+﻿/*Fernando Larios Diaz
+    INFO 4430
+    Dr. Houghton
+    Web Application*/
+
+html {
     font-size: 14px;
     text-align: center;
 }
-
+/*Logo CSS*/
 @media (min-width: 768px) {
   html {
     font-size: 16px;

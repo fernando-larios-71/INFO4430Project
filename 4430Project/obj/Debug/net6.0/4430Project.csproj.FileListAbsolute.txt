@@ -259,3 +259,4 @@ C:\Users\flari\OneDrive\Desktop\4430Project\4430Project\4430Project\obj\Debug\ne
 C:\Users\flari\OneDrive\Desktop\4430Project\4430Project\4430Project\obj\Debug\net6.0\4430Project.pdb
 C:\Users\flari\OneDrive\Desktop\4430Project\4430Project\4430Project\obj\Debug\net6.0\4430Project.genruntimeconfig.cache
 C:\Users\flari\OneDrive\Desktop\4430Project\4430Project\4430Project\obj\Debug\net6.0\ref\4430Project.dll
+C:\Users\flari\OneDrive\Desktop\4430Project\4430Project\4430Project\bin\Debug\net6.0\Data\DB Stuff\users.json

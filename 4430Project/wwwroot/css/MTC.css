@@ -1,9 +1,12 @@
-﻿body {
+﻿/*Fernando Larios Diaz
+    INFO 4430
+    Dr. Houghton
+    Web Application*/
+
+body {
     background-color:white;
 }
-
-
-
+/*Headers CSS*/
 h1 {
     color: orange;
     font-weight: bold;
@@ -23,7 +26,15 @@ h3 {
     text-align: center;
 }
 
+/*Table CSS*/
 table, tr, th {
     margin-left: auto;
     margin-right: auto;
+    border: 1px solid;
+}
+
+/*Attempt to add CSS to button*/
+.button:hover {
+    color: rgba(255, 255, 255, 1);
+    box-shadow: 0 5px 15px rgba(145, 92, 182, .4);
 }
